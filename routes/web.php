@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GameController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,29 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello/{name}', 'HelloController@hello');
+Route::get('users', 'UserController@list')
+    ->name('get.users');
 
-Route::get('/goodbye/{name}', function (string $name) {
-    return 'Goodbye: ' . $name;
-});
+Route::get('users/{id}', 'User\ProfilController@show')
+    ->name('get.user.profile');
 
-// Route::get('/example', function () {
-//     return "jestem GET";
-// });
+Route::get('users/{id}/address', 'User\ShowAddress')
+    ->where(['id' => '[0-9]+'])
+    ->name('get.users.address');
 
-$uri = '/example';
-Route::get($uri, fn () => 'jestem arrow GET');
-Route::post($uri, fn () => 'jestem post');
-Route::put($uri, fn () => 'jestem PUT');
-Route::delete($uri, fn () => 'jestem DELETE');
-Route::patch($uri, fn () => 'jestem PATH');
-Route::options($uri, fn () => 'jestem OPTIONS');
+// Route::resource('games', 'GameController');
+Route::resource('games', 'GameController');
 
-Route::match(['get', 'post'], '/match', function () {
-    return 'jestem getem i postem jednoczesnie';
-});
-
-Route::any('/all', fn () => 'wszystkie metody');
+// Route::post('/games/test', 'GameController@create');
 
 //metody HTTP
 // get - pobiera dane z serwera i zwrócenie użytkownikowi, po stronie aplikacji nie powinno się nic zmieniać
