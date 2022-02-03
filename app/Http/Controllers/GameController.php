@@ -4,90 +4,86 @@ namespace App\Http\Controllers;
 
 use Faker\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function show()
     {
-        echo "jestem w index gameController";
+        return view('layout.main');
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function equipment()
     {
-        $faker = Factory::create();
-
-        $gN = [
-            'gameName' => $faker->name,
-            'gameId' => $faker->numberBetween(0, 50)
-        ];
-
-        return view('user.gamesList', ['gN' => $gN]);
+        return view('user.equipment');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function stats()
     {
-        //
+        return view('user.stats');
+    }
+    public function master()
+    {
+        return view('layout.master');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function rest()
     {
-        //
+        return view('user.rest');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function monsters()
     {
-        //
+        return view('user.monsters');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function characters()
     {
-        //
+        return view('user.characters');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function fights()
     {
-        //
+        return view('user.fights');
+    }
+
+    public function animals()
+    {
+        return view('user.animals');
+    }
+
+    public function shop()
+    {
+        return view('user.shop');
+    }
+
+    public function privateHandel()
+    {
+        return view('user.privateHandel');
+    }
+
+    public function playerShop()
+    {
+        return view('user.playerShop');
+    }
+
+    public function news()
+    {
+        return view('user.news');
+    }
+
+    public function king()
+    {
+        return view('user.king');
+    }
+
+    public function jobs()
+    {
+        return view('user.jobs');
+    }
+
+    public function guilds()
+    {
+        return view('user.jobs');
     }
 }
